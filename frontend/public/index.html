@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimal Working Example</title>
+    <link type="text/css" rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Minimal Working Example (MWE)</h1>
+    <p>This is a MWE for demonstration purposes.</p>
+    
+    <button onclick="getRoot()">Click Me!</button>
+    <button onclick="getItems()">Get Items</button>
+    
+    <form id="form" onsubmit="event.preventDefault(); postItems();">
+        <input type="text" id="name" placeholder="Enter item name" required>
+        <input type="text" id="description" placeholder="Enter item description" required>
+        <input type="number" id="price" placeholder="Enter item price" step="0.01" required>
+        <input type="number" id="tax" placeholder="Enter item tax" step="0.01" required>
+        <button type="submit">Submit Form</button>
+    </form>
+
+    <p id="message"></p>
+
+    <script type="text/javascript" src="script.js"></script>
+</body>
+</html>
