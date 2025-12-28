@@ -5,6 +5,9 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building...'
+                dir('backend') {
+                    sh 'docker build -t backend .'
+                }
             }
         }
         stage('Test') {
