@@ -6,7 +6,7 @@ pipeline {
             steps {
                 echo 'Building...'
                 dir('backend') {
-                    sh 'docker build -t backend .'
+                    docker.build("backend")
                 }
             }
         }
