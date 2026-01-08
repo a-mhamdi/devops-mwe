@@ -32,12 +32,12 @@ cd devops-mwe
    npm i
    npm run dev
    ```
-
+<!--
 3. **MongoDB**
    - Ensure MongoDB is running on your system
    - Default connection: `mongodb://localhost:27017`
    - Update connection string in `backend/server.py` if needed
-
+-->
 4. **Access the Application**
    - Frontend: http://localhost:3000
    - Backend API: http://localhost:8000
