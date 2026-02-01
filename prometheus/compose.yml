@@ -15,7 +15,6 @@ services:
       - "9090:9090"
 
   app:
-    build:
-      context: .
+    image: frontend # devops-mwe-jenkins:latest
     ports:
       - "8000:8000"
