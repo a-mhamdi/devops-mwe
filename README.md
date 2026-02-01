@@ -15,7 +15,7 @@ git clone https://github.com/a-mhamdi/devops-mwe.git
 cd devops-mwe
 ```
 
-## Setup and Usage
+## Setup and Usage _(w/ hot reload)_
 
 1. **Backend (FastAPI)**
    ```bash
@@ -23,7 +23,7 @@ cd devops-mwe
    uv venv
    source .venv/bin/activate
    uv pip install -r requirements.txt
-   uvicorn server:app --reload --host 0.0.0.0 --port 8000
+   fastapi dev
    ```
 
 2. **Frontend (Express.js)**
@@ -32,30 +32,21 @@ cd devops-mwe
    npm i
    npm run dev
    ```
-<!--
 3. **MongoDB**
    - Ensure MongoDB is running on your system
    - Default connection: `mongodb://localhost:27017`
-   - Update connection string in `backend/server.py` if needed
--->
+   - Update connection string in `.env` if needed
+
 4. **Access the Application**
    - Frontend: http://localhost:3000
    - Backend API: http://localhost:8000
-   - API Documentation: http://localhost:8000/docs (FastAPI auto-generated)
+   - API Documentation: http://localhost:8000/docs _(FastAPI auto-generated)_
 
 ## Docker Setup
 
-1. **Build Docker Images**
-   ```bash
-   docker build -t backend-image ./backend
-   docker build -t frontend-image ./frontend
-   ```
-
-2. **Run Containers**
-   ```bash
-   docker run -d --name backend-container -p 8000:8000 backend-image
-   docker run -d --name frontend-container -p 3000:3000 frontend-image
-   ```
+```bash
+docker compose up --build -d
+```
 
 ## Jenkins CI/CD
 
