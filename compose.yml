@@ -1,0 +1,43 @@
+services:
+  frontend:
+    build: frontend/
+    restart: unless-stopped
+    ports:
+      - 3000:3000
+    environment:
+      BACKEND_URL: http://localhost:8000
+    depends_on:
+      - backend
+
+  backend:
+    build: backend/
+    restart: unless-stopped
+    ports:
+      - 8000:8000
+    environment:
+      MONGODB_URI: mongodb://${ROOT_USERNAME}:${ROOT_PASSWORD}@mongodb:27017
+      MONGODB_DB: ${MONGODB_DB}
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongo
+    restart: unless-stopped
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${ROOT_PASSWORD}
+
+  mongo-express:
+    image: mongo-express
+    restart: unless-stopped
+    ports:
+      - 8081:8081
+    depends_on:
+      - mongodb
+    environment:
+      ME_CONFIG_MONGODB_URL: mongodb://${ROOT_USERNAME}:${ROOT_PASSWORD}@mongodb:27017
+      ME_CONFIG_BASICAUTH_ENABLED: ${BASICAUTH_ENABLED}
+      ME_CONFIG_BASICAUTH_USERNAME: ${BASICAUTH_USERNAME}
+      ME_CONFIG_BASICAUTH_PASSWORD: ${BASICAUTH_PASSWORD}
